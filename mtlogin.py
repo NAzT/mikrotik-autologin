@@ -44,13 +44,16 @@ def login(username, password):
     payload = urlencode(data)
     headers = {}
     headers.update({'Content-Type':'application/x-www-form-urlencoded'})
+    print payload
+    print headers
     response, _ = h.request(URL, method='POST', body=payload, headers=headers)
-    assert(response.status==200)
-    try:
-        response['set-cookie']
-        response['set-cookie']
-    except KeyError:
-        raise Exception('Login Failed')
+    print response
+    #assert(response.status==200)
+    #try:
+    #    response['set-cookie']
+    #    response['set-cookie']
+    #except KeyError:
+    #    raise Exception('Login Failed')
 
 def main():
     import sys
@@ -75,6 +78,6 @@ def main():
     print 'hashed password: %s' % hex_hash_password
     login(username, hex_hash_password)
     print 'Successfully logged in ;)'
-    
+
 if __name__ == '__main__':
     main()
